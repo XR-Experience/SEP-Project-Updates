@@ -1,7 +1,7 @@
 
 # XR Experience Team Update - May/2025
 
-Link to Update Video: 
+[Update Video](https://youtu.be/eu4sOoChrqM)
 
 ## Hackathons/Game Jams
 
