@@ -4,17 +4,17 @@
 
  Participated in Hackathons/Game Jams with mixed teams of existing team members of XR Experience and other NTU students potentially interested in joining the team.
 
-Took part in Summerbuilld 2025 and Beginner’s Summer Game Jam
+Took part in Summerbuild 2025 and Beginner’s Summer Game Jam
 
 ## Beginner’s Summer Game Jam
 
 🏆 **Ranked #5 in Visuals and Sound**
 
- Game jam page link: [https://itch.io/jam/beginners-jam-summer-2025](https://itch.io/jam/beginners-jam-summer-2025)
+ Game jam page link: [https://itch.io/jam/beginners-jam-summer-2025](https://itch.io/jam/beginners-jam-summer-2025) Targeted towards individuals not working in the games industry
 
-Submitted: [The Clock Keeper’s Toll](https://baton-0.itch.io/the-clockkeepers-toll)
+Submitted: [The Clock Keeper’s Toll](https://baton-0.itch.io/the-clockkeepers-toll) (100+ teams)
 
-Worked with other students to create a game for the week long game jam to create a first person puzzle explortation game.
+Worked with other students to create a game for the week long game jam to create a first person puzzle exploratation game.
 
 ### Skill Development:
 
