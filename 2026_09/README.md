@@ -40,6 +40,7 @@ Worked with a team of 8 for Global Game Jam to develop a 3D havoc wrecking game 
 
 Hackathon link: [Brainhack 2026](https://www.dsta.gov.sg/brainhackv)
 
+Made CivicGuard. A progressive web app that helps Singaporeans learn about safety procedures through deliberate practice during peacetime and turns into an evacuation mode during crisis. CividGuard prepares Singaporeans for evacuation through its gamified teaching tools, e.g., pathfinder missions help them learn how to navigate to the closest shelters and AEDs (like pokemon go) and scenario play helps them train their decision making skills during crisis. When a crisis is triggered, the app turns into an evacuation mode that shows the users what to do in that specific scenario and dynamically changes the evacuation route based on the congestion level.
 
 #### Skill Development
 
