@@ -43,10 +43,14 @@ Hackathon link: [Brainhack 2026](https://www.dsta.gov.sg/brainhackv)
 
 #### Skill Development
 
-- React: frontend is written in react
-- Supabase: for most of the backend (basic crud, authentication, realtime, and object storage)
-- Claude code: used an AI tool to help with development
-- Grok API: used to generate options during scenario play, and to grade the decisions made by the users
+- React
+  - Frontend is written in react
+- Supabase
+  - For most of the backend (basic crud, authentication, realtime, and object storage)
+- Grok API
+  - Used to generate options during scenario play, and to grade the decisions made by the users
+- Claude code
+  - Used an AI tool to help with development
 
 ![Team Picture](img/brainhack_1.JPG)
 ![diagram](img/brainhack_2.jpg)
