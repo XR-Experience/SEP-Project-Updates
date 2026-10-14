@@ -1,4 +1,4 @@
-# XR Experience Team Update - May/2026
+# XR Experience Team Update - September/2026
 
 A competition team in the ilab to take part in game jams (hackathons but for games)
 

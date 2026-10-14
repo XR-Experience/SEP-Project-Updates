@@ -1,0 +1,7 @@
+[
+  { "folder": "2026_09", "title": "September 2026", "summary": "GMTK 2026 submission, Brainhack CivicGuard, and the SummerBuild GitHub workshop." },
+  { "folder": "2026_05", "title": "May 2026", "summary": "3D asset pipeline from Blender to UE5, and plans for SummerBuild and GMTK 2026." },
+  { "folder": "2026_03", "pdf": "2026_03.pdf", "title": "March 2026", "summary": "Global Game Jam 2026 (featured in the Straits Times), shaders and 3D modelling." },
+  { "folder": "2025_07", "pdf": "2025_07.pdf", "title": "July 2025", "summary": "Beginner's Summer Game Jam (#5 Visuals & Sound) and WONDERHOY!!! at SummerBuild." },
+  { "folder": "2025_05", "pdf": "2025_05.pdf", "title": "May 2025", "summary": "SummerBuild 2025 kickoff, skill development in UE5, and the Intro to GitHub workshop." }
+]

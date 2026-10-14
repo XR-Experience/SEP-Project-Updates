@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XR Experience Updates</title>
+<meta name="description" content="Project updates from XR Experience, an NTU iLab competition team taking part in game jams and hackathons.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f7fb;
+    --surface: #ffffff;
+    --surface-2: #eef0f7;
+    --text: #1a1b26;
+    --muted: #5b5f73;
+    --border: #dfe2ee;
+    --accent: #6d4aff;
+    --accent-2: #00b3a4;
+    --accent-soft: rgba(109, 74, 255, 0.1);
+    --shadow: 0 1px 2px rgba(20, 20, 40, 0.06), 0 4px 16px rgba(20, 20, 40, 0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1017;
+      --surface: #171923;
+      --surface-2: #1f2230;
+      --text: #e8e9f1;
+      --muted: #9a9db0;
+      --border: #2a2d3d;
+      --accent: #9b85ff;
+      --accent-2: #2fd3c4;
+      --accent-soft: rgba(155, 133, 255, 0.14);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1017;
+    --surface: #171923;
+    --surface-2: #1f2230;
+    --text: #e8e9f1;
+    --muted: #9a9db0;
+    --border: #2a2d3d;
+    --accent: #9b85ff;
+    --accent-2: #2fd3c4;
+    --accent-soft: rgba(155, 133, 255, 0.14);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  a { color: var(--accent); }
+  h1, h2, h3, h4 { font-family: "Space Grotesk", Inter, sans-serif; line-height: 1.25; }
+
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  header.site .wrap { display: flex; align-items: center; gap: 16px; height: 60px; }
+  .brand {
+    font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 18px;
+    color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px;
+  }
+  .brand .dot {
+    width: 22px; height: 22px; border-radius: 6px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  }
+  nav.links { margin-left: auto; display: flex; gap: 4px; align-items: center; }
+  nav.links a, nav.links button {
+    color: var(--muted); text-decoration: none; font-weight: 500; font-size: 15px;
+    padding: 6px 10px; border-radius: 8px; background: none; border: 0; cursor: pointer; font-family: inherit;
+  }
+  nav.links a:hover, nav.links button:hover { color: var(--text); background: var(--surface-2); }
+  nav.links a.active { color: var(--accent); }
+
+  /* Hero */
+  .hero { padding: 64px 0 32px; }
+  .hero .eyebrow { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; }
+  .hero h1 { font-size: clamp(34px, 6vw, 52px); margin: 8px 0 12px; }
+  .hero p { color: var(--muted); font-size: 18px; max-width: 620px; margin: 0; }
+
+  section { padding: 32px 0; }
+  section > h2 { font-size: 26px; margin: 0 0 20px; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 20px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 24px; box-shadow: var(--shadow);
+  }
+  .card h3 { margin: 0 0 8px; font-size: 18px; }
+  .card p { margin: 0 0 12px; color: var(--muted); }
+  .card p:last-child { margin-bottom: 0; }
+  .members { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .members li { display: flex; align-items: center; gap: 12px; font-weight: 500; }
+  .avatar {
+    width: 36px; height: 36px; border-radius: 50%; flex: none;
+    display: grid; place-items: center; font-weight: 700; font-size: 14px;
+    background: var(--accent-soft); color: var(--accent);
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .tag {
+    font-size: 13px; font-weight: 500; padding: 4px 10px; border-radius: 999px;
+    background: var(--surface-2); color: var(--muted); border: 1px solid var(--border);
+  }
+  .highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+  .highlight .num { font-family: "Space Grotesk", sans-serif; font-size: 22px; font-weight: 700; color: var(--accent); }
+  .highlight .lbl { color: var(--muted); font-size: 14px; }
+
+  /* Timeline */
+  .timeline { display: grid; gap: 14px; }
+  .update-card {
+    display: grid; grid-template-columns: 140px 1fr auto; gap: 20px; align-items: center;
+    text-decoration: none; color: inherit;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 20px 24px; box-shadow: var(--shadow);
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .update-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .update-card .date { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 18px; }
+  .update-card .summary { color: var(--muted); }
+  .update-card .arrow { color: var(--accent); font-size: 20px; }
+
+  /* Update view */
+  .update-nav { display: flex; justify-content: space-between; gap: 12px; padding: 24px 0 8px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    color: var(--text); background: var(--surface); border: 1px solid var(--border);
+    padding: 8px 14px; border-radius: 10px; font-weight: 500; font-size: 14px;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn[aria-disabled="true"] { visibility: hidden; }
+
+  article.md { padding: 8px 0 48px; overflow-wrap: anywhere; }
+  article.md h1 { font-size: clamp(28px, 5vw, 40px); margin: 16px 0 16px; }
+  article.md h1:not(:first-child) { font-size: 28px; margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); }
+  article.md h2 { font-size: 24px; margin-top: 40px; }
+  article.md h3 { font-size: 19px; margin-top: 28px; }
+  article.md h4 { font-size: 16px; margin-top: 20px; }
+  article.md img { max-width: 100%; height: auto; border-radius: 10px; display: block; margin: 12px 0; }
+  article.md p > img + img { margin-top: 12px; }
+  article.md table { border-collapse: collapse; margin: 16px 0; max-width: 100%; display: block; overflow-x: auto; }
+  article.md td, article.md th { padding: 6px; vertical-align: middle; }
+  article.md table img { margin: 0 auto; }
+  article.md code { background: var(--surface-2); padding: 2px 6px; border-radius: 6px; font-size: .9em; }
+  article.md ul { padding-left: 22px; }
+  article.md blockquote { margin: 16px 0; padding: 4px 16px; border-left: 3px solid var(--accent); color: var(--muted); }
+  .video {
+    position: relative; aspect-ratio: 16 / 9; width: 100%; margin: 16px 0 8px;
+    border-radius: 14px; overflow: hidden; background: #000; box-shadow: var(--shadow);
+  }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .pdf-link { margin: 0 0 8px; }
+  .status { color: var(--muted); padding: 48px 0; }
+
+  footer { border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; padding: 24px 0 40px; margin-top: 32px; }
+
+  @media (max-width: 720px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .highlights { grid-template-columns: 1fr; }
+    .update-card { grid-template-columns: 1fr; gap: 6px; }
+    .update-card .arrow { display: none; }
+    .hero { padding: 40px 0 16px; }
+    nav.links a, nav.links button { padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#/"><span class="dot"></span>XR Experience</a>
+    <nav class="links">
+      <a href="#/about" data-nav="about">About</a>
+      <a href="#/updates" data-nav="updates">Updates</a>
+      <button id="theme-toggle" aria-label="Toggle colour theme" title="Toggle theme">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="app"></main>
+
+<footer>
+  <div class="wrap">
+    XR Experience · NTU Innovation Lab ·
+    <a href="https://github.com/XR-Experience/SEP-Project-Updates">View on GitHub</a>
+  </div>
+</footer>
+
+<template id="home-tpl">
+  <div class="hero">
+    <div class="eyebrow">SEP Project Updates</div>
+    <h1>XR Experience</h1>
+  </div>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="about-grid">
+      <div class="card">
+        <h3>Who we are</h3>
+        <p>We are a hackathon team under the NTU Innovation Lab. We join hackathons and game jams in mixed teams with existing members, prospective members, and participants from public jams, using each event to learn a new engine, or techniques.</p>
+        <p>Outside of competitions, we run workshops for the wider student community with collaborations through the Innovation Lab committee, such as the <em>Intro to GitHub</em> workshop for SummerBuild.</p>
+        <div class="tags">
+          <span class="tag">Unity</span>
+          <span class="tag">Unreal Engine 5</span>
+          <span class="tag">Shaders (HLSL / GLSL)</span>
+          <span class="tag">Blender</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Cyber Security</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Members</h3>
+        <ul class="members">
+          <li><span class="avatar">HW</span>Heng Woon</li>
+          <li><span class="avatar">S</span>Silviana</li>
+          <li><span class="avatar">WX</span>Wei Xin</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlights">
+      <div class="card highlight"><div class="num">🏆 #5</div><div class="lbl">Visuals &amp; Sound, Beginner's Summer Game Jam 2025</div></div>
+      <div class="card highlight"><div class="num">🗞️ Featured</div><div class="lbl">Straits Times coverage of our Global Game Jam 2026 game</div></div>
+      <div class="card highlight"><div class="num">Recurring</div><div class="lbl">Intro to GitHub workshops</div></div>
+    </div>
+  </section>
+
+  <section id="updates">
+    <h2>Updates</h2>
+    <div class="timeline" id="timeline"></div>
+  </section>
+</template>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+(function () {
+  var app = document.getElementById('app');
+  var updates = [];
+  var cache = {};
+
+  // Theme toggle
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    var isDark = root.getAttribute('data-theme')
+      ? root.getAttribute('data-theme') === 'dark'
+      : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function setActive(key) {
+    document.querySelectorAll('[data-nav]').forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('data-nav') === key);
+    });
+  }
+
+  function renderHome(scrollTo) {
+    app.innerHTML = document.getElementById('home-tpl').innerHTML;
+    document.getElementById('timeline').innerHTML = updates.map(function (u) {
+      return '<a class="update-card" href="#/' + esc(u.folder) + '">' +
+        '<div class="date">' + esc(u.title) + '</div>' +
+        '<div class="summary">' + esc(u.summary || '') + '</div>' +
+        '<div class="arrow">→</div></a>';
+    }).join('');
+    setActive(scrollTo || '');
+    if (scrollTo) {
+      var el = document.getElementById(scrollTo);
+      if (el) el.scrollIntoView();
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  function youtubeId(url) {
+    var m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{11})/);
+    return m ? m[1] : null;
+  }
+
+  function isRelative(url) {
+    return url && !/^(?:[a-z]+:|\/\/|#|\/)/i.test(url);
+  }
+
+  function renderUpdate(folder) {
+    var idx = updates.findIndex(function (u) { return u.folder === folder; });
+    if (idx < 0) { app.innerHTML = '<p class="status">Update not found. <a href="#/">Back home</a></p>'; return; }
+    var u = updates[idx];
+    var newer = updates[idx - 1], older = updates[idx + 1];
+    setActive('updates');
+    document.title = u.title + ' · XR Experience Updates';
+
+    function navHtml() {
+      return '<div class="update-nav">' +
+        (older ? '<a class="btn" href="#/' + esc(older.folder) + '">← ' + esc(older.title) + '</a>' : '<a class="btn" aria-disabled="true">←</a>') +
+        '<a class="btn" href="#/updates">All updates</a>' +
+        (newer ? '<a class="btn" href="#/' + esc(newer.folder) + '">' + esc(newer.title) + ' →</a>' : '<a class="btn" aria-disabled="true">→</a>') +
+        '</div>';
+    }
+
+    app.innerHTML = navHtml() + '<p class="status">Loading…</p>';
+    window.scrollTo(0, 0);
+
+    var p = cache[folder] || (cache[folder] = fetch(folder + '/README.md').then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.text();
+    }));
+
+    p.then(function (md) {
+      if (location.hash.replace(/^#\/?/, '') !== folder) return;
+      var article = document.createElement('article');
+      article.className = 'md';
+      article.innerHTML = marked.parse(md);
+
+      // Point relative image/link paths at the update's folder
+      article.querySelectorAll('img[src]').forEach(function (img) {
+        var src = img.getAttribute('src');
+        if (isRelative(src)) img.setAttribute('src', folder + '/' + src);
+        img.loading = 'lazy';
+      });
+      article.querySelectorAll('a[href]').forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (isRelative(href)) a.setAttribute('href', folder + '/' + href);
+        else if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener'; }
+      });
+
+      // Embed the update video below the title
+      var vid = null;
+      article.querySelectorAll('a[href]').forEach(function (a) {
+        if (!vid) vid = youtubeId(a.getAttribute('href'));
+      });
+      var h1 = article.querySelector('h1');
+      if (vid && h1) {
+        var box = document.createElement('div');
+        box.className = 'video';
+        box.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + vid +
+          '" title="Update video" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+        h1.after(box);
+      }
+
+      if (u.pdf) {
+        var pdf = document.createElement('p');
+        pdf.className = 'pdf-link';
+        pdf.innerHTML = '<a class="btn" href="' + esc(folder + '/' + u.pdf) + '" target="_blank" rel="noopener">📄 PDF version</a>';
+        (h1 || article.firstChild).after(pdf);
+      }
+
+      app.innerHTML = navHtml();
+      app.appendChild(article);
+      app.insertAdjacentHTML('beforeend', navHtml());
+    }).catch(function () {
+      delete cache[folder];
+      app.innerHTML = navHtml() + '<p class="status">Could not load this update.</p>';
+    });
+  }
+
+  function route() {
+    var path = location.hash.replace(/^#\/?/, '');
+    document.title = 'XR Experience Updates';
+    if (path === '' ) renderHome();
+    else if (path === 'about' || path === 'updates') renderHome(path);
+    else renderUpdate(path);
+  }
+
+  fetch('updates.json').then(function (r) { return r.json(); }).then(function (list) {
+    updates = list;
+    window.addEventListener('hashchange', route);
+    route();
+  }).catch(function () {
+    app.innerHTML = '<p class="status">Could not load the list of updates.</p>';
+  });
+})();
+</script>
+</body>
+</html>
